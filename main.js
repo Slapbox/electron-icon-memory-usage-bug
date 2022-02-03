@@ -2,11 +2,12 @@
 const {app, BrowserWindow, nativeImage, Tray} = require('electron')
 const path = require('path')
 
-function createWindow () {
+function createWindow (appIcon) {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: appIcon,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
@@ -19,10 +20,9 @@ function createWindow () {
 app.whenReady().then(() => {
   const iconPath = path.resolve('build/icons/icon-1024x1024.png');
 
-   global.appIcon = nativeImage.createFromPath(iconPath); // Main process memory usage on Windows: 312mb
-  // const appIcon = nativeImage.createFromPath(iconPath); // Main process memory usage on Windows: 18mb
+  const appIcon = nativeImage.createFromPath(iconPath);
 
-  createWindow()
+  createWindow(appIcon)
 })
 
 app.on('window-all-closed', function () {

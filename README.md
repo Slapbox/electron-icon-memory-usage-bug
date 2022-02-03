@@ -1,11 +1,8 @@
 # electron-icon-memory-usage-bug
 
-Toggle/untoggle the comments on these lines to see the memory bug in action: https://github.com/Slapbox/electron-icon-memory-usage-bug/blob/dd976c2cd7e095239f980b6c1e608a5e90c94bef/main.js#L22-L23
+1. Run the project and note memory usage
+2. Close app
+3. Navigate to ./build/icon and delete all variations besides the `@1x` variant
+4. Run the project again and note the large decrease in memory usage (around 300mb)
 
-Use `yarn start` to start the Electron project, and close the window to end it.
-
-# Operating systems
-
-- Windows: Exhibits bug
-- Linux: Does not seem to exhibit bug
-- macOS: Not tested
+NOTE: Tested on Windows
